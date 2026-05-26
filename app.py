@@ -77,6 +77,6 @@ with st.form("form", enter_to_submit=False, border=True, ):
     
 if submit and st.session_state.response != "" and st.session_state.score != "":
     if st.session_state.response == "positive":
-        st.success(f"Positive Review 😄 ({score:.2%} confidence)")
+        st.success(f"Positive Review 😄 ({st.session_state.score:.2%} confidence)")
     else: 
-        st.error(f"Negative Review 🙁 ({score:.2%} confidence)") 
+        st.error(f"Negative Review 🙁 ({st.session_state.score:.2%} confidence)") 
