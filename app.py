@@ -22,9 +22,8 @@ def run_tf_idf(input):
     lst = []
     lst.append(input)
     text = vectorizer.transform(lst)
-    response = tf_idf_model.predict(text)
-    response = response[0]
-    proba = tf_idf_model.predict_proba(text)
+    response = tf_idf_model.predict(text)[0]
+    proba = tf_idf_model.predict_proba(text)[0]
 
     if response == "positive":
         score = proba[1]
