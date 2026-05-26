@@ -15,22 +15,32 @@ if "response" not in st.session_state:
 if "input" not in st.session_state:
     st.session_state.input = ""
 
+st.session_state.score = ""
 
 def run_tf_idf(input):
+    score = ""
     lst = []
     lst.append(input)
     text = vectorizer.transform(lst)
     response = tf_idf_model.predict(text)
-    return response[0]
+    response = response[0]
+    proba = tf_idf_model.predict_proba(text)
+
+    if response == "positive":
+        score = proba[1]
+    else:
+        score = proba[0]
+    return response, score
 
 
 def run_distilBert(input):
     response = distilBert_model(input)[0]["label"]
+    score = distilBert_model(input)[0]["score"] 
     if response == "LABEL_0":
         response = "negative"
     else:
         response = "positive"
-    return response
+    return response, score
 
 def is_submitted():
     if st.session_state.input == "":
@@ -39,12 +49,13 @@ def is_submitted():
         return 
     if st.session_state.selected_model == "TF-IDF + Logistic Regression":
         with st.spinner("", show_time=True):
-            response = run_tf_idf(st.session_state.input)
+            response, score = run_tf_idf(st.session_state.input)
     else:
         with st.spinner("", show_time=True):
-            response = run_distilBert(st.session_state.input)
+            response, score = run_distilBert(st.session_state.input)
         
     st.session_state.response = response    
+    st.session_state.score = score
 
 st.title(':blue[🎬 AI Movie Review Analyzer]', help=None, width="stretch", text_alignment="center")
 
@@ -65,8 +76,8 @@ with st.form("form", enter_to_submit=False, border=True, ):
     with mid2:
         submit = st.form_submit_button("Submit", on_click=is_submitted)
     
-if submit and st.session_state.response != "":
+if submit and st.session_state.response != "" and st.session_state.score != "":
     if st.session_state.response == "positive":
-        st.success("Positive Review 😄")
-    else:
-        st.error("Negative Review 🙁") 
+        st.success(f"Positive Review 😄 ({score:.2%} confidence)")
+    else: 
+        st.error(f"Negative Review 🙁 ({score:.2%} confidence)") 
