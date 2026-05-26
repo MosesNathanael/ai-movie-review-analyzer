@@ -15,7 +15,8 @@ if "response" not in st.session_state:
 if "input" not in st.session_state:
     st.session_state.input = ""
 
-st.session_state.score = ""
+if "score" not in st.session_state:
+    st.session_state.score = ""
 
 def run_tf_idf(input):
     score = ""
