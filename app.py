@@ -7,7 +7,7 @@ from transformers import pipeline
 
 tf_idf_model = pickle.load(open("Models/tf_idf_model.pkl", "rb"))
 vectorizer = pickle.load(open("Models/vectorizer.pkl", "rb"))
-distilBert_model = pipeline("sentiment-analysis", model="Models/distilbert_model")
+distilBert_model = pipeline("sentiment-analysis", model="omidroshani/imdb-sentiment-analysis")
 
 if "response" not in st.session_state:
     st.session_state.response = ""
