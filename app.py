@@ -37,7 +37,7 @@ def is_submitted():
         st.error("Please input a text")
         st.session_state.response = ""
         return 
-    if st.session_state.selected_model == "TF-IDF":
+    if st.session_state.selected_model == "TF-IDF + Logistic Regression":
         with st.spinner("", show_time=True):
             response = run_tf_idf(st.session_state.input)
     else:
