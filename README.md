@@ -54,12 +54,12 @@ The app predicts whether a movie review is a positive or negative review based o
     - Stop_words
     - Lemmatization
 3. **Feature Engineering**
-   For **logistic regression model**, the cleaned text was converted into vectors using TF-IDF vectorizer.
-   For **distilBERT model**, DistilBERT tokenizer and embeddings were used to capture contextual meaning from text.
+   - **logistic regression model**, the cleaned text was converted into vectors using TF-IDF vectorizer.
+   - **distilBERT model**, DistilBERT tokenizer and embeddings were used to capture contextual meaning from text.
 4. **Model Training**
-   **TF-IDF + Logistic Regression Model**:
+   - **TF-IDF + Logistic Regression Model**:
      The vectors were trained using Logistic Regression for sentiment classification
-   **DistilBERT**:
+   - **DistilBERT**:
      The model was already trained, we just need to use pipeline() function to pass our input and the model.
 5. **Evaluation**
    The models were evaluated using:
