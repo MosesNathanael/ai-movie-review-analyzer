@@ -9,7 +9,7 @@ The app predicts whether a movie review is a positive or negative review based o
 
 ## Features
 - **Analyze movie reviews instantly**
-- **Predict positive or negative sentiment with prediction score**
+- **Predict positive or negative sentiment with confidence score**
 - **Choose between traditional ML and transformer models**
 - **NLP-based text preprocessing**
 - **Interactive UI**
@@ -76,7 +76,7 @@ The app predicts whether a movie review is a positive or negative review based o
 2. User select the model
 3. The text is preprocessed using NLP techniques (tokenization, cleaning, stop_word)
 4. The model analyze the preprocessed text
-5. The app displyas the positive or negative output and also the prediction score.
+5. The app displyas the positive or negative output and the confidence score.
 
 
 ## Installation
