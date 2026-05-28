@@ -80,9 +80,9 @@ The app predicts whether a movie review is a positive or negative review based o
 
 
 ## Installation
-git clone https://github.com/MosesNathanael/ai-movie-review-analyzer.git
-cd ai-movie-review-analyzer
-pip install -r requirements.txt
+1. git clone https://github.com/MosesNathanael/ai-movie-review-analyzer.git
+2. cd ai-movie-review-analyzer
+3. pip install -r requirements.txt
 
 
 ## Run the app
